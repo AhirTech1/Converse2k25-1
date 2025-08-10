@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 .title h1 {
     font-family: "Orbitron", sans-serif;
@@ -42,10 +43,11 @@
   transition: all 0.3s ease;
   border: 1px solid rgba(148, 163, 184, 0.1);
   backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
 }
 
 .event-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-7px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   border-color: rgba(6, 182, 212, 0.3);
 }
@@ -55,6 +57,10 @@
   overflow: hidden;
   margin-top: 25px;
   border-radius: 7px;
+}
+
+.event-text-primary {
+  font-family: "Inter", sans-serif;
 }
 
 .event-image img {
@@ -67,6 +73,26 @@
 .event-card:hover .event-image img {
   transform: scale(1.05);
 }
+
+.event-card .event-text-primary {
+  color: #f8fafc; /* Default light color */
+  transition: color 0.3s ease;
+}
+
+.event-card .event-text-secondary {
+  color: #94a3b8; /* Default gray color */
+  transition: color 0.3s ease;
+}
+
+/* Hover Effects */
+.event-card:hover .event-text-primary {
+  color: #818cf8; /* Purple-blue color (Tailwind's indigo-400) */
+}
+
+.event-card:hover .event-text-secondary {
+  color: #cbd5e1; /* Lighter gray color (Tailwind's gray-300) */
+}
+
 
 .event-content {
   padding: 1.7rem;

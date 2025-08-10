@@ -1,5 +1,5 @@
 import React from 'react';
-import "./HomePage.css";
+import "./Common.css";
 // Removed EventListing import since we're not using it anymore
 
 const sponsors = [
@@ -28,7 +28,7 @@ function HomePage() {
 
       {/* ===== Events Section (Replaced Featured Events) ===== */}
       <section id="events" className="section">
-        <div className="section-title">
+        <div className="section-title font-semibold">
           <h2>Our Events</h2>
         </div>
 
@@ -79,8 +79,8 @@ function HomePage() {
       </section>
 
       {/* ===== Sponsors Section ===== */}
-      <section className="py-12 px-4 sm:px-6">
-        <div className="section-title mb-8">
+      <section className="py-12 px-4 sm:px-6 mt-8">
+        <div className="section-title mb-4 font-semibold">
           <h2 className="text-4xl md:text-5xl text-center">Our Sponsors</h2>
         </div>
 

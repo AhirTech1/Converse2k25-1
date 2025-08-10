@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { EventListing } from "../constants/EventListing";
+import "./Common.css";
 
 function Events() {
   const navigate = useNavigate();
@@ -14,8 +15,8 @@ function Events() {
   };
 
   return (
-    <div className="relative min-h-screen py-10 px-4 bg-gradient-to-br from-gray-500 to-gray-950">
-      <h1 className="text-3xl font-bold text-center mb-8">All Events</h1>
+    <div className="section-title relative flex flex-col items-center justify-start min-h-screen text-white overflow-hidden bg-gradient-to-br from-purple-900 via-gray-900 to-gray-900 text-gray-50 overflow-x-hidden min-h-screen relative before:content-[''] before:absolute before:inset-0 before:w-full before:h-full before:bg-[radial-gradient(circle_at_10%_20%,rgba(91,33,182,0.1)_0%,transparent_20%)] before:bg-[radial-gradient(circle_at_90%_80%,rgba(124,58,237,0.1)_0%,transparent_20%)] before:-z-10">
+      <h2 className="font-semibold mt-12">All Events</h2>
 
       {/* Navigation Overlay */}
       {navigatingTo && (
@@ -29,25 +30,24 @@ function Events() {
         </div>
       )}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      <div className="w-full px-4 sm:px-6 lg:px-8 mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
         {Object.values(EventListing).map((event) => (
           <div
             key={event.slug}
             onClick={() => handleClick(event.slug, event.name)}
-            className="event-card borde rounded-md transition-all duration-300 cursor-pointer p-4 group"
+            className="event-card"
           >
-            <div className="overflow-hidden rounded-lg">
+            <div className="event-image">
               <img
                 src={event.image}
                 alt={event.name}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
               />
             </div>
             <div className="mt-4">
-              <h2 className="text-xl font-semibol group-hover:underline transition duration-200">
+              <h3 className="event-text-primary text-3xl font-semibold">
                 {event.name}
-              </h2>
-              <p className="text-sm italic group-hover:tracking-wide transition-all duration-300">
+              </h3>
+              <p className="event-text-secondary italic text-xl text-gray-300 mt-2">
                 {event.slogan}
               </p>
             </div>
