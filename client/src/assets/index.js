@@ -1,4 +1,4 @@
-import converse2k25 from './converse2k25.png'
+import converse2k25 from '../../public/converse2k25Logo.png'
 
 import LogoAiMemes from './eventLogo/initaimemes.jpg'
 import LogoAiQuiz from './eventLogo/initaiquiz.jpg'

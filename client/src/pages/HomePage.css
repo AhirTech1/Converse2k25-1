@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap');
+
+.title h1 {
+    font-family: "Orbitron", sans-serif;
+    font-size: 4.1rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+/* New Events Section Styles */
+.section {
+  padding: 7rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.section-title h2 {
+  font-family: "Orbitron", sans-serif;
+  font-size: 2.8rem;
+  margin-bottom: 0rem;
+  position: relative;
+  display: inline-block;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
+}
+
+.event-card {
+  background: rgba(30, 41, 59, 0.5);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.event-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border-color: rgba(6, 182, 212, 0.3);
+}
+
+.event-image {
+  height: 250px;
+  overflow: hidden;
+  margin-top: 25px;
+  border-radius: 7px;
+}
+
+.event-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.3s ease;
+}
+
+.event-card:hover .event-image img {
+  transform: scale(1.05);
+}
+
+.event-content {
+  padding: 1.7rem;
+}
+
+.event-content h3 {
+  font-size: 1.6rem;
+  margin-bottom: 0.2rem;
+}
+
+.event-content h4 {
+  font-size: 1.2em;
+  margin-bottom: 0.7rem;
+  color: #94a3b8;
+}
+
+.event-content p {
+  color: #94a3b8;
+  margin-bottom: 1.3rem;
+  line-height: 1.6;
+}
+
+.event-list {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  border-radius: 50px;
+  font-weight: 600;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.tech-event {
+  background: rgba(37, 99, 235, 0.2);
+  color: #2563eb;
+}
+
+.non-tech-event {
+  background: rgba(139, 92, 246, 0.2);
+  color: #8b5cf6;
+}
+
+.event-card-link {
+  text-decoration: none;
+  color: inherit;
+}

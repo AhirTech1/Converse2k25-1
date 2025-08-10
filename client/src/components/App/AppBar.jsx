@@ -1,62 +1,66 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import HomeIcon from "@mui/icons-material/Home";
-import EventNoteIcon from "@mui/icons-material/EventNote";
-import CollectionsIcon from "@mui/icons-material/Collections";
-import PersonIcon from "@mui/icons-material/Person";
-import LoginIcon from "@mui/icons-material/Login";
-import LogoutIcon from "@mui/icons-material/Logout";
-import { useSelector, useDispatch } from "react-redux";
-import { LOGOUT } from "../../constants/actionTypes";
-import { toast } from "react-toastify";
+// src/components/AppBar.jsx
+import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Home, Calendar, Info, LogIn, LogOut, Bell, Ticket, Users } from "lucide-react";
 
-const IconDisplay = ({ icon, link }) => {
-  return (
-    <Link to={link}>
-      <div className="icon-hover border-0 rounded-4xl p-2">{icon}</div>
+export default function AppBar() {
+  const location = useLocation();
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Replace with real auth state later
+
+  const mainLinks = [
+    { to: "/", icon: <Home size={22} />, label: "Home" },
+    { to: "/schedule", icon: <Calendar size={22} />, label: "Schedule" },
+    { to: "/events", icon: <Users size={22} />, label: "Events" },
+  ];
+
+  const secondaryLinks = [
+    { to: "/about", icon: <Info size={22} />, label: "About" },
+    isLoggedIn
+      ? {
+          to: "/logout",
+          icon: <LogOut size={22} />,
+          label: "Logout",
+          onClick: () => {
+            // real logout function here
+            setIsLoggedIn(false);
+          },
+        }
+      : {
+          to: "/signin",
+          icon: <LogIn size={22} />,
+          label: "Sign In",
+        },
+  ];
+
+  const renderButton = ({ to, icon, label, onClick }) => (
+    <Link
+      key={label}
+      to={to}
+      onClick={onClick}
+      className={`relative group flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 ${
+        location.pathname === to
+          ? "bg-purple-600 text-white"
+          : "bg-gray-800 text-gray-400 hover:-translate-y-0.5 hover:bg-[#d6b3ff] hover:text-gray-900"
+      }`}
+    >
+      {icon}
+      <span className="absolute bottom-full mb-2 px-2 py-1 text-sm text-white bg-black rounded opacity-0 group-hover:opacity-100 whitespace-nowrap pointer-events-none transition-opacity duration-200">
+        {label}
+        <span className="absolute bottom-[-4px] left-1/2 -translate-x-1/2 w-2 h-2 bg-black transform rotate-45"></span>
+      </span>
     </Link>
   );
-};
-
-function AppBar() {
-  const user = useSelector((state) => state.auth?.authData?.user);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    localStorage.clear();
-    dispatch({ type: LOGOUT });
-    toast.success("Logout !!", {
-      position: "top-right",
-      autoClose: 5000,
-      theme: "dark",
-    });
-    navigate("/");
-  };
 
   return (
-    <div className="fixed bottom-0 w-full flex justify-center bg-transparent py-3 shadow-md z-50">
-      <div className="bg-transperent border-primary text-primary px-4 py-2 rounded-3xl backdrop-blur-md text-sm border-3 flex gap-4">
-        <IconDisplay icon={<HomeIcon />} link="/" />
-        <IconDisplay icon={<EventNoteIcon />} link="/events" />
-        <IconDisplay icon={<CollectionsIcon />} link="/gallary" />
+    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-gray-900 p-3 rounded-full flex items-center space-x-3 shadow-lg border border-gray-700 z-50">
+      {/* Main nav buttons */}
+      {mainLinks.map(renderButton)}
 
-        {!user ? (
-          <IconDisplay icon={<LoginIcon />} link="/signin" />
-        ) : (
-          <>
-            <IconDisplay icon={<PersonIcon />} link="/profile" />
-            <div className="bg-divider h-full w-0.5 rounded-3xl"></div>
-            <button onClick={handleLogout}>
-              <div className="icon-hover border-0 rounded-4xl p-2">
-                <LogoutIcon />
-              </div>
-            </button>
-          </>
-        )}
-      </div>
+      {/* Separator */}
+      <div className="w-px h-8 bg-gray-600 mr-3 ml-1"></div>
+
+      {/* Secondary nav buttons */}
+      {secondaryLinks.map(renderButton)}
     </div>
   );
 }
-
-export default AppBar;
