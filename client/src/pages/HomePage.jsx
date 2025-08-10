@@ -33,7 +33,7 @@ function HomePage() {
         </div>
 
         <div className="events-grid">
-          <a href="events/events.html?type=tech-event" className="event-card-link">
+          <a href="/events?type=tech-event" className="event-card-link">
             <div className="event-card">
               <div className="event-image">
                 <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Tech Event Image" />
@@ -55,7 +55,7 @@ function HomePage() {
             </div>
           </a>
 
-          <a href="events/events.html?type=non-tech-event" className="event-card-link">
+          <a href="/events?type=non-tech-event" className="event-card-link">
             <div className="event-card">
               <div className="event-image">
                 <img src="https://images.unsplash.com/photo-1541532713592-79a0317b6b77?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Non-Tech Event Image" />

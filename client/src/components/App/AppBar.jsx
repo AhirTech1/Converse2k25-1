@@ -39,8 +39,8 @@ export default function AppBar() {
       onClick={onClick}
       className={`relative group flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 ${
         location.pathname === to
-          ? "bg-purple-600 text-white"
-          : "bg-gray-800 text-gray-400 hover:-translate-y-0.5 hover:bg-[#d6b3ff] hover:text-gray-900"
+          ? "bg-purple-600 text-white hover:-translate-y-0.5"
+          : "bg-gray-800 text-gray-400 hover:-translate-y-1 hover:bg-[#d6b3ff] hover:text-gray-900"
       }`}
     >
       {icon}
