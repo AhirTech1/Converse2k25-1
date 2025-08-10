@@ -2,6 +2,15 @@ import React from 'react';
 import "./HomePage.css";
 // Removed EventListing import since we're not using it anymore
 
+const sponsors = [
+  "/sponsor.png",
+  "/sponsor.png",
+  "/sponsor.png",
+  "/sponsor.png",
+  "/sponsor.png",
+  "/sponsor.png",
+];
+
 function HomePage() {
   return (
     <div className="relative flex flex-col items-center justify-start min-h-screen text-white overflow-hidden bg-gradient-to-br from-purple-900 via-gray-900 to-gray-900 text-gray-50 overflow-x-hidden min-h-screen relative before:content-[''] before:absolute before:inset-0 before:w-full before:h-full before:bg-[radial-gradient(circle_at_10%_20%,rgba(91,33,182,0.1)_0%,transparent_20%)] before:bg-[radial-gradient(circle_at_90%_80%,rgba(124,58,237,0.1)_0%,transparent_20%)] before:-z-10">
@@ -12,7 +21,7 @@ function HomePage() {
         className="relative z-40 w-1/2 h-auto sm:w-1/4 md:w-1/5 lg:w-1/4 mt-4 animate-slideUp"
       />
       <div className="title flex flex-col items-center justify-center text-center">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[4.5rem] leading-tight mb-6 bg-clip-text">
+        <h1 className="font-['Orbitron'] text-4xl font-bold sm:text-5xl md:text-6xl lg:text-7xl xl:text-[4.5rem] leading-tight mb-6 bg-clip-text">
           CONVERSE<br />2K25
         </h1>
       </div>
@@ -70,10 +79,28 @@ function HomePage() {
       </section>
 
       {/* ===== Sponsors Section ===== */}
-      <section className="relative z-40 w-full mt-8">
-        <div className="w-[300px] sm:w-[600px] h-[600px] absolute -translate-x-1/2 left-1/2 top-0 rounded-full bg-purple-500 opacity-20 blur-3xl"></div>
-        <h2 className="text-3xl font-bold text-center mb-6 relative z-50">Sponsors</h2>
-        {/* Sponsor logos go here */}
+      <section className="py-12 px-4 sm:px-6">
+        <div className="section-title mb-8">
+          <h2 className="text-4xl md:text-5xl text-center">Our Sponsors</h2>
+        </div>
+
+        {/* Responsive sponsor logos */}
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-10">
+            {sponsors.map((logo, index) => (
+              <div
+                key={index}
+                className="flex justify-center items-center p-3 bg-white/5 rounded-xl hover:bg-white/10 transition-all duration-300"
+              >
+                <img
+                  src={logo}
+                  alt={`Sponsor ${index + 1}`}
+                  className="w-full h-auto object-contain transform transition duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/50 rounded-xl"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
     </div>
   );
