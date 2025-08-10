@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import "./Common.css";
-// Removed EventListing import since we're not using it anymore
 
 const sponsors = [
   "/sponsor.png",
@@ -12,35 +11,109 @@ const sponsors = [
 ];
 
 function HomePage() {
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  });
+  
+  useEffect(() => {
+    // Date: September 20, 2025 Time: 9:00 AM (months - 0-indexed)
+    const registrationDeadline = new Date(2025, 8, 20, 9, 0, 0).getTime();
+
+    const timer = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = registrationDeadline - now;
+      
+      if (distance > 0) {
+        setTimeLeft({
+          days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+          minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+          seconds: Math.floor((distance % (1000 * 60)) / 1000)
+        });
+      } else {
+        clearInterval(timer);
+      }
+    }, 1000);
+    
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <div className="relative flex flex-col items-center justify-start min-h-screen text-white overflow-hidden bg-gradient-to-br from-purple-900 via-gray-900 to-gray-900 text-gray-50 overflow-x-hidden min-h-screen relative before:content-[''] before:absolute before:inset-0 before:w-full before:h-full before:bg-[radial-gradient(circle_at_10%_20%,rgba(91,33,182,0.1)_0%,transparent_20%)] before:bg-[radial-gradient(circle_at_90%_80%,rgba(124,58,237,0.1)_0%,transparent_20%)] before:-z-10">
-      {/* Main Logo Section */}
-      <img
-        src="/converse2k25Logo.png"
-        alt="Converse 2k25 Logo"
-        className="relative z-40 w-1/2 h-auto sm:w-1/4 md:w-1/5 lg:w-1/4 mt-4 animate-slideUp"
-      />
-      <div className="title flex flex-col items-center justify-center text-center">
-        <h1 className="font-['Orbitron'] text-4xl font-bold sm:text-5xl md:text-6xl lg:text-7xl xl:text-[4.5rem] leading-tight mb-6 bg-clip-text">
-          CONVERSE<br />2K25
-        </h1>
+      <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between px-4 mt-8 md:mt-12">
+
+        <img
+          src="/converse2k25Logo.png"
+          alt="Converse 2k25 Logo"
+          className="w-1/2 md:w-1/4 lg:w-1/5 animate-slideUp"
+        />
+        
+
+        <div className="title flex flex-col items-center justify-center text-center mt-4 md:mt-0">
+          <h1 className="font-['Orbitron'] text-4xl font-bold sm:text-5xl md:text-6xl lg:text-7xl xl:text-[4.5rem] leading-tight mb-2 bg-clip-text">
+            CONVERSE<br />2K25
+          </h1>
+        </div>
+        
+        {/* Countdown Timer */}
+        <div className="countdown-timer mt-6 md:mt-0 bg-gray-800/50 backdrop-blur-sm rounded-xl p-4 border border-purple-500/30 shadow-lg shadow-purple-500/20">
+          <h3 className="text-center text-lg md:text-xl font-semibold mb-3 text-purple-300">
+            Registration Ends In
+          </h3>
+          <div className="flex justify-center space-x-2 sm:space-x-3">
+
+            <div className="flex flex-col items-center">
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold bg-purple-900/80 rounded-lg w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center">
+                {timeLeft.days.toString().padStart(2, '0')}
+              </div>
+              <span className="text-xs sm:text-sm mt-1 text-gray-300">Days</span>
+            </div>
+            
+
+            <div className="flex flex-col items-center">
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold bg-purple-900/80 rounded-lg w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center">
+                {timeLeft.hours.toString().padStart(2, '0')}
+              </div>
+              <span className="text-xs sm:text-sm mt-1 text-gray-300">Hours</span>
+            </div>
+            
+
+            <div className="flex flex-col items-center">
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold bg-purple-900/80 rounded-lg w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center">
+                {timeLeft.minutes.toString().padStart(2, '0')}
+              </div>
+              <span className="text-xs sm:text-sm mt-1 text-gray-300">Mins</span>
+            </div>
+            
+
+            <div className="flex flex-col items-center">
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold bg-purple-900/80 rounded-lg w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center">
+                {timeLeft.seconds.toString().padStart(2, '0')}
+              </div>
+              <span className="text-xs sm:text-sm mt-1 text-gray-300">Secs</span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* ===== Events Section (Replaced Featured Events) ===== */}
+      {/* ===== Events Section ===== */}
       <section id="events" className="section">
         <div className="section-title font-semibold">
           <h2>Our Events</h2>
         </div>
 
         <div className="events-grid">
-          <a href="/events?type=tech-event" className="event-card-link">
+          <a href="/events?filter=tech" className="event-card-link">
             <div className="event-card">
               <div className="event-image">
                 <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Tech Event Image" />
               </div>
               <div className="event-content">
                 <h3>Tech Events</h3>
-                <h4>Where Innovation Meets Execution</h4>
+                <h4 className="italic">Where Innovation Meets Execution</h4>
                 <span className="event-list tech-event">Logo Hunt</span>
                 <span className="event-list tech-event">Cyber Siege</span>
                 <span className="event-list tech-event">IT Quiz</span>
@@ -55,14 +128,14 @@ function HomePage() {
             </div>
           </a>
 
-          <a href="/events?type=non-tech-event" className="event-card-link">
+          <a href="/events?filter=non-tech" className="event-card-link">
             <div className="event-card">
               <div className="event-image">
                 <img src="https://images.unsplash.com/photo-1541532713592-79a0317b6b77?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Non-Tech Event Image" />
               </div>
               <div className="event-content">
                 <h3>Non-Tech Events</h3>
-                <h4>Fun Beyond the Code</h4>
+                <h4 className="italic">Fun Beyond the Code</h4>
                 <span className="event-list non-tech-event">BGMI</span>
                 <span className="event-list non-tech-event">Valorant Blitz</span>
                 <span className="event-list non-tech-event">IPL Auction</span>
@@ -84,7 +157,6 @@ function HomePage() {
           <h2 className="text-4xl md:text-5xl text-center">Our Sponsors</h2>
         </div>
 
-        {/* Responsive sponsor logos */}
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-10">
             {sponsors.map((logo, index) => (

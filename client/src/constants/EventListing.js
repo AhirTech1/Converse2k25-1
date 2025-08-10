@@ -1,4 +1,6 @@
 import {
+    techEvents, 
+    nonTechEvents,
     pyIt,
     itQuiz,
     codathon,
@@ -22,7 +24,7 @@ import {
   LogoPYIT,
   LogoTechTussal,
   LogoWebWave
-} from "../assets"; 
+} from "../assets";
 
 export const EventListing = {
   [pyIt]: {
