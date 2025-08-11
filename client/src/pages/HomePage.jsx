@@ -11,91 +11,51 @@ const sponsors = [
 ];
 
 function HomePage() {
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0
-  });
+  const [logoGlow, setLogoGlow] = useState(false);
   
-  useEffect(() => {
-    // Date: September 20, 2025 Time: 9:00 AM (months - 0-indexed)
-    const registrationDeadline = new Date(2025, 8, 20, 9, 0, 0).getTime();
-
-    const timer = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = registrationDeadline - now;
-      
-      if (distance > 0) {
-        setTimeLeft({
-          days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-          minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((distance % (1000 * 60)) / 1000)
-        });
-      } else {
-        clearInterval(timer);
-      }
-    }, 1000);
-    
-    return () => clearInterval(timer);
-  }, []);
+  const triggerLogoAnimation = () => {
+    setLogoGlow(true);
+    setTimeout(() => setLogoGlow(false), 1000); // Reset after animation
+  };
 
   return (
-    <div className="relative flex flex-col items-center justify-start min-h-screen text-white overflow-hidden bg-gradient-to-br from-purple-900 via-gray-900 to-gray-900 text-gray-50 overflow-x-hidden min-h-screen relative before:content-[''] before:absolute before:inset-0 before:w-full before:h-full before:bg-[radial-gradient(circle_at_10%_20%,rgba(91,33,182,0.1)_0%,transparent_20%)] before:bg-[radial-gradient(circle_at_90%_80%,rgba(124,58,237,0.1)_0%,transparent_20%)] before:-z-10">
-      <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between px-4 mt-8 md:mt-12">
+    <div className="relative flex flex-col items-center justify-start min-h-screen text-white overflow-hidden text-gray-50 overflow-x-hidden min-h-screen relative">
+      {/* Enhanced Dynamic Animated Background with Subtle Stars and Gradient */}
+      <div className="absolute inset-0 -z-5 w-full h-full animate-twinkling-stars bg-[url('/textures/starry-bg.png')] bg-cover opacity-50" />
+      <div className="absolute inset-0 -z-10 w-full h-full animate-neon-glow before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-r before:from-purple-900/30 before:via-blue-900/30 before:to-purple-900/30 before:rounded-full before:blur-3xl" />
+      
+      {/* Centered Logo and Title */}
+      <div className="relative z-40 w-2/3 sm:w-1/4 md:w-1/5 lg:w-1/4 mt-8">
+        <div className={`relative ${logoGlow ? 'animate-logo-glow' : ''}`}>
+          <img
+            src="converse2k25Logo.png"
+            alt="Converse 2k25 Logo"
+            className="relative w-full animate-slideUp hover:scale-105 transition-transform duration-300 cursor-pointer"
+            onClick={triggerLogoAnimation}
+          />
 
-        <img
-          src="/converse2k25Logo.png"
-          alt="Converse 2k25 Logo"
-          className="w-1/2 md:w-1/4 lg:w-1/5 animate-slideUp"
-        />
-        
-
-        <div className="title flex flex-col items-center justify-center text-center mt-4 md:mt-0">
-          <h1 className="font-['Orbitron'] text-4xl font-bold sm:text-5xl md:text-6xl lg:text-7xl xl:text-[4.5rem] leading-tight mb-2 bg-clip-text">
-            CONVERSE<br />2K25
-          </h1>
-        </div>
-        
-        {/* Countdown Timer */}
-        <div className="countdown-timer mt-6 md:mt-0 bg-gray-800/50 backdrop-blur-sm rounded-xl p-4 border border-purple-500/30 shadow-lg shadow-purple-500/20">
-          <h3 className="text-center text-lg md:text-xl font-semibold mb-3 text-purple-300">
-            Registration Ends In
-          </h3>
-          <div className="flex justify-center space-x-2 sm:space-x-3">
-
-            <div className="flex flex-col items-center">
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold bg-purple-900/80 rounded-lg w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center">
-                {timeLeft.days.toString().padStart(2, '0')}
-              </div>
-              <span className="text-xs sm:text-sm mt-1 text-gray-300">Days</span>
-            </div>
-            
-
-            <div className="flex flex-col items-center">
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold bg-purple-900/80 rounded-lg w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center">
-                {timeLeft.hours.toString().padStart(2, '0')}
-              </div>
-              <span className="text-xs sm:text-sm mt-1 text-gray-300">Hours</span>
-            </div>
-            
-
-            <div className="flex flex-col items-center">
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold bg-purple-900/80 rounded-lg w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center">
-                {timeLeft.minutes.toString().padStart(2, '0')}
-              </div>
-              <span className="text-xs sm:text-sm mt-1 text-gray-300">Mins</span>
-            </div>
-            
-
-            <div className="flex flex-col items-center">
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold bg-purple-900/80 rounded-lg w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center">
-                {timeLeft.seconds.toString().padStart(2, '0')}
-              </div>
-              <span className="text-xs sm:text-sm mt-1 text-gray-300">Secs</span>
-            </div>
+          <div className="title flex flex-col items-center justify-center text-center mt-4 md:mt-0">
+            <h1 className="font-['Orbitron'] text-4xl gradient-main-title font-bold sm:text-5xl md:text-6xl lg:text-7xl xl:text-[4.5rem] leading-tight mb-2 bg-clip-text">
+              CONVERSE<br />2K25
+            </h1>
           </div>
+
+          {/* Subtle Sparkle Particles on Click */}
+          {logoGlow && (
+            <div className="absolute inset-0 z-50 pointer-events-none overflow-hidden">
+              {[...Array(10)].map((_, i) => (
+                <div
+                  key={i}
+                  className="absolute w-2 h-2 rounded-full animate-sparkle"
+                  style={{
+                    background: `hsl(${Math.random() * 360}, 100%, 70%)`,
+                    top: `${Math.random() * 100}%`,
+                    left: `${Math.random() * 100}%`,
+                  }}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </div>
 
