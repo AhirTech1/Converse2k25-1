@@ -1,7 +1,7 @@
 // src/components/AppBar.jsx
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Home, Calendar, Info, LogIn, LogOut, Bell, Ticket, Users } from "lucide-react";
+import { Home, Calendar, Info, LogIn, LogOut, SquareTerminal, Users } from "lucide-react";
 
 export default function AppBar() {
   const location = useLocation();
@@ -10,11 +10,11 @@ export default function AppBar() {
   const mainLinks = [
     { to: "/", icon: <Home size={22} />, label: "Home" },
     { to: "/schedule", icon: <Calendar size={22} />, label: "Schedule" },
-    { to: "/events", icon: <Users size={22} />, label: "Events" },
+    { to: "/events", icon: <SquareTerminal size={23} />, label: "Events" },
   ];
 
   const secondaryLinks = [
-    { to: "/about", icon: <Info size={22} />, label: "About" },
+    { to: "/teams", icon: <Users size={22} />, label: "Teams" },
     isLoggedIn
       ? {
           to: "/logout",

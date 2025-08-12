@@ -15,7 +15,7 @@ function HomePage() {
   
   const triggerLogoAnimation = () => {
     setLogoGlow(true);
-    setTimeout(() => setLogoGlow(false), 1000); // Reset after animation
+    setTimeout(() => setLogoGlow(false), 1000);
   };
 
   return (
@@ -56,6 +56,9 @@ function HomePage() {
               ))}
             </div>
           )}
+        </div>
+        <div className="items-center justify-center text-center">
+          <p className="font-bold slogan">From Hello World to Prompt World</p>
         </div>
       </div>
 

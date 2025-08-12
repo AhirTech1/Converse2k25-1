@@ -10,6 +10,11 @@
     background-clip: text;
 }
 
+.slogan {
+  font-size: 1.5rem;
+  color: #94a3b8;
+}
+
 /* New Events Section Styles */
 .section {
   padding: 7rem 2rem;
@@ -56,7 +61,7 @@
 .event-image {
   height: 250px;
   overflow: hidden;
-  margin-top: 25px;
+  margin-top: 10px;
   border-radius: 7px;
 }
 
@@ -96,7 +101,7 @@
 
 
 .event-content {
-  padding: 1.7rem;
+  padding: 1rem;
 }
 
 .event-content h3 {

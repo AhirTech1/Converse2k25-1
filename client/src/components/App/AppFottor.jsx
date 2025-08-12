@@ -1,5 +1,5 @@
 import React from "react";
-import { Instagram } from "lucide-react"; // ✅ Make sure lucide-react is installed
+import { Instagram } from "lucide-react";
 
 function AppFottor() {
   return (
