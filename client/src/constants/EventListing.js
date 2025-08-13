@@ -1,6 +1,4 @@
 import {
-    techEvents, 
-    nonTechEvents,
     pyIt,
     itQuiz,
     codathon,
@@ -11,7 +9,7 @@ import {
     aiMemes,
     logoHunt,
     bugBuzz
-} from '../constants/eventNames'
+} from './eventNames.js'
 
 import {
   LogoAiMemes,

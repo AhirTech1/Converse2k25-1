@@ -27,6 +27,9 @@ import PYIT from './pages/EventDeatils/PYIT.jsx'
 import AIQuiz from './pages/EventDeatils/AIQuiz.jsx'
 
 
+import CoreTeam from './pages/TeamDetails/CoreTeam.jsx'
+
+
 function App() {
 const dispatch = useDispatch();
 
@@ -58,7 +61,10 @@ const dispatch = useDispatch();
         <Route path='/event/webwave' element={<WebWaves/>}/>
         <Route path='/event/aimemes' element={<AIMemes/>}/>
         <Route path='/event/pyit' element={<PYIT/>}/>  
-        <Route path='/event/aiquiz' element={<AIQuiz/>}/>  
+        <Route path='/event/aiquiz' element={<AIQuiz/>}/>
+
+          {/* Teams Page */}
+          <Route path='/teams/core-team' element={<CoreTeam />}/>
 
 
       </Routes>
