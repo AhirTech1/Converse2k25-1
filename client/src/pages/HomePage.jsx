@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Common.css";
 
 const sponsors = [
@@ -12,6 +13,7 @@ const sponsors = [
 
 function HomePage() {
   const [logoGlow, setLogoGlow] = useState(false);
+  const navigate = useNavigate();
   
   const triggerLogoAnimation = () => {
     setLogoGlow(true);
@@ -137,6 +139,25 @@ function HomePage() {
           </div>
         </div>
       </section>
+
+        {/* About Section */}
+        <section className="min-h-0 w-auto mt-24 px-3 sm:px-6 md:px-8">
+            <div className="section-title mb-4 font-semibold max-w-5xl mx-auto text-center">
+                <h2 className="font-bold leading-tight">About<br /><span className="text-purple-500">Converse 2K25</span></h2>
+                <p className="text-gray-300 sm:text-4xl md:text-2xl mt-4 mb-6">
+                    Converse 2K25 is the annual techfest by IT & AI-DS departments of SCET,
+                    blending technology and creativity into a two-day spectacle of innovation.
+                    Join us on 20–21 Sept 2025 to experience workshops, competitions, and more.
+                </p>
+                <button
+                    onClick={() => navigate('/about')}
+                    className="px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded-lg font-medium transition-all duration-300"
+                >
+                    Know More
+                </button>
+            </div>
+        </section>
+
     </div>
   );
 }

@@ -12,6 +12,10 @@
   --text-highlights: linear-gradient(to top, #dddfe0, #3be719);
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 .background-color {
   background-color: var(--color-background);
 }

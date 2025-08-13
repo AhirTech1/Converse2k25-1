@@ -1,7 +1,7 @@
 // src/components/AppBar.jsx
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Home, Calendar, Info, LogIn, LogOut, SquareTerminal, Users } from "lucide-react";
+import { Home, Calendar, LogIn, LogOut, SquareTerminal, Users } from "lucide-react";
 
 export default function AppBar() {
   const location = useLocation();
@@ -37,7 +37,7 @@ export default function AppBar() {
       key={label}
       to={to}
       onClick={onClick}
-      className={`relative group flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 ${
+      className={`relative group flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 bg-gray-900/20 backdrop-blur-md ${
         location.pathname === to
           ? "bg-purple-600 text-white hover:-translate-y-0.5"
           : "bg-gray-800 text-gray-400 hover:-translate-y-1 hover:bg-[#d6b3ff] hover:text-gray-900"
@@ -52,7 +52,7 @@ export default function AppBar() {
   );
 
   return (
-    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-gray-900 p-3 rounded-full flex items-center space-x-3 shadow-lg border border-gray-700 z-50">
+    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-gray-900/60 backdrop-blur-md p-3 rounded-full flex items-center space-x-3 shadow-lg border border-gray-700 z-50">
       {/* Main nav buttons */}
       {mainLinks.map(renderButton)}
 

@@ -46,7 +46,7 @@ function Events() {
 
   return (
     <div className="section-title relative flex flex-col min-h-0 items-center justify-start text-white overflow-hidden bg-gradient-to-br from-purple-900 via-gray-900 to-gray-900 text-gray-50 overflow-hidden relative before:relative before:inset-0 before:w-full before:h-full before:bg-[radial-gradient(circle_at_10%_20%,rgba(91,33,182,0.1)_0%,transparent_20%)] before:bg-[radial-gradient(circle_at_90%_80%,rgba(124,58,237,0.1)_0%,transparent_20%)] before:-z-10">
-      <h2 className="font-semibold mt-12">Featured Events</h2>
+      <h2 className="font-semibold mt-12 px-4">Featured Events</h2>
       
       {/* Filter Buttons */}
       <div className="flex flex-wrap justify-center gap-4 mt-4 mb-6">
