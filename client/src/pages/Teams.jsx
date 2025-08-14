@@ -7,7 +7,7 @@ function Teams() {
     const navigate = useNavigate();
 
     return (
-        <section className="min-h-screen bg-black text-white px-4 sm:px-6 md:px-12 py-16">
+        <section className="min-h-screen bg-gradient-to-br from-purple-900 via-gray-900 to-gray-900 text-gray-50 overflow-hidden relative before:relative before:inset-0 before:w-full before:h-full before:bg-[radial-gradient(circle_at_10%_20%,rgba(91,33,182,0.1)_0%,transparent_20%)] before:bg-[radial-gradient(circle_at_90%_80%,rgba(124,58,237,0.1)_0%,transparent_20%)] before:-z-10 px-4 sm:px-6 md:px-12 py-16">
             <div className="max-w-6xl mx-auto">
                 <h2 className="text-center text-4xl font-bold mb-12">
                     Meet the <span className="text-purple-500">Teams</span>

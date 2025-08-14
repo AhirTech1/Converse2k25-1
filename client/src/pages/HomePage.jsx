@@ -32,7 +32,7 @@ function HomePage() {
           <img
             src="converse2k25Logo.png"
             alt="Converse 2k25 Logo"
-            className="relative w-full animate-slideUp hover:scale-105 transition-transform duration-300 cursor-pointer"
+            className="relative w-full animate-slideUp hover:scale-105 transition-transform duration-200 cursor-pointer"
             onClick={triggerLogoAnimation}
           />
 
