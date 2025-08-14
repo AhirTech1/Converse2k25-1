@@ -29,7 +29,8 @@ import AIQuiz from './pages/EventDeatils/AIQuiz.jsx'
 
 
 import CoreTeam from './pages/TeamDetails/CoreTeam.jsx'
-
+import WebTeam from './pages/TeamDetails/WebTeam.jsx'
+import GraphicsTeam from './pages/TeamDetails/GraphicsTeam.jsx'
 
 function App() {
 const dispatch = useDispatch();
@@ -67,7 +68,8 @@ const dispatch = useDispatch();
 
           {/* Teams Page */}
           <Route path='/teams/core-team' element={<CoreTeam />}/>
-
+          <Route path='/teams/web-team' element={<WebTeam />}/>
+          <Route path='/teams/graphics-team' element={<GraphicsTeam />}/>
 
       </Routes>
       <AppFottor/>
