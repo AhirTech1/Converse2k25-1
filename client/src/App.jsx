@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react'
 import { Routes,Route } from 'react-router-dom'
+import ScrollToTop from './ScrollToTop'
 import { useDispatch } from "react-redux";
 import { fetchUser } from './auth/auth.js';
 
@@ -42,6 +43,7 @@ const dispatch = useDispatch();
   return (
     <>
       <AppBar/>
+        <ScrollToTop />
       <Routes>
         <Route path='/' element={<HomePage/>}/>
         <Route path='/about' element={<AboutPage/>}/>
