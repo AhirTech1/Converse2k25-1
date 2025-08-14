@@ -8,13 +8,16 @@ const teamCoordinators = [
 ];
 
 const teamMembers = [
-    { name: "Ayush Polara", image: "/images/AyushPolara.png" },
-    { name: "Mitarsh Savaliya", image: "/images/MitarshSavaliya.png" },
-    { name: "Shreya Chopra", image: "/images/ShreyaChopra.png" },
-    { name: "Jenish Sonani", image: "/images/JenishSonani.png" },
-    { name: "Harsh Maniya", image: "/images/HarshManiya.png" },
-    { name: "Uttam Moradiya", image: "/images/UttamMoradiya.png" },
-    { name: "Jensi Ghadiya", image: "/images/JensiGhadiya.png" },
+    { name: "Ayush Vanani", image: "/images/AyushVanani.png" },
+    { name: "Krushali Gohil", image: "/images/KrushaliGohil.png" },
+    { name: "Vanshika Kapadiya", image: "/images/VanshikaKapadiya.png" },
+    { name: "Palak Tank", image: "/images/PalakTank.png" },
+    { name: "Sanchi Savani", image: "/images/SanchiSavani.png" },
+    { name: "Namitha Yelugam", image: "/images/NamithaYelugam.png" },
+    { name: "Nupur Sonware", image: "/images/NupurSonware.png" },
+    { name: "Twisha Savani", image: "/images/TwishaSavani.png" },
+    { name: "Kangana Gupta", image: "/images/KanganaGupta.png" },
+    { name: "Krishna Dabhi", image: "/images/KrishnaDabhi.png" },
 ];
 
 function CoreTeam() {
@@ -26,13 +29,13 @@ function CoreTeam() {
                 </h2>
 
                 <TeamSection
-                    title="Faculty Coordinators"
+                    title="Team Coordinators"
                     members={teamCoordinators}
                     gradientClass="faculty-coordinator-gradient"
                 />
 
                 <TeamSection
-                    title="Student Coordinators"
+                    title="Team Members"
                     members={teamMembers}
                     gradientClass="student-coordinator-gradient"
                 />
