@@ -33,7 +33,7 @@ function Codathon() {
 
     return (
         <EventLayout
-            eventName="CODATHON"
+            eventName="Codathon"
             tagline="Showcase your coding skills in this thrilling competition"
             posterImage={PosterCodathon}
             registerButton={
