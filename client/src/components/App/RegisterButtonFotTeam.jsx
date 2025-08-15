@@ -144,7 +144,7 @@ function RegisterButtonForTeam({ event, min, max }) {
         <div className="space-y-5">
             <div className="bg-gray-800/50 backdrop-blur-sm p-5 rounded-xl border border-gray-700 shadow-lg">
                 <h3 className="text-lg font-semibold text-blue-300 mb-3">Team Registration</h3>
-                <p className="text-sm text-gray-400 mb-4">Add {min-1} to {max-1} team members</p>
+                <p className="text-sm text-gray-400 mb-4">Add {min} to {max} team members</p>
 
                 <EmailDropdown
                     emailOptions={emailOptions}
@@ -202,7 +202,7 @@ function RegisterButtonForTeam({ event, min, max }) {
             Registering Team...
           </span>
                 ) : (
-                    `Register Team (${selectedEmailsList.length + 1}/${max})`
+                    `Register Team (${selectedEmailsList.length}/${max})`
                 )}
             </button>
         </div>

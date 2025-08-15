@@ -19,7 +19,7 @@ const formOptions = {
   ],
 
   departments: [
-    { value: "", label: "Select College" },
+    { value: "", label: "Select Department" },
     { value: "AI&DS", label: "Artificial Intelligence and Data Science" },
     { value: "Ch_En", label: "Chemical Engineering" },
     { value: "Ci_En", label: "Civil Engineering" },
