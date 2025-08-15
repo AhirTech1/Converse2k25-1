@@ -3,61 +3,71 @@ import { Link, useLocation } from "react-router-dom";
 import { Home, Calendar, LogIn, LogOut, SquareTerminal, Users } from "lucide-react";
 
 export default function AppBar() {
-  const location = useLocation();
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Replace with real auth state later
+    const location = useLocation();
+    const [isLoggedIn, setIsLoggedIn] = useState(false); // Replace with real auth state later
+    const isHomePage = location.pathname === "/";
 
-  const mainLinks = [
-    { to: "/", icon: <Home size={22} />, label: "Home" },
-    { to: "/schedule", icon: <Calendar size={22} />, label: "Schedule" },
-    { to: "/events", icon: <SquareTerminal size={23} />, label: "Events" },
-  ];
+    const mainLinks = [
+        { to: "/", icon: <Home size={22} />, label: "Home" },
+        { to: "/schedule", icon: <Calendar size={22} />, label: "Schedule" },
+        { to: "/events", icon: <SquareTerminal size={23} />, label: "Events" },
+    ];
 
-  const secondaryLinks = [
-    { to: "/teams", icon: <Users size={22} />, label: "Teams" },
-    isLoggedIn
-      ? {
-          to: "/logout",
-          icon: <LogOut size={22} />,
-          label: "Logout",
-          onClick: () => {
-            // real logout function here
-            setIsLoggedIn(false);
-          },
-        }
-      : {
-          to: "/signin",
-          icon: <LogIn size={22} />,
-          label: "Sign In",
-        },
-  ];
+    const secondaryLinks = [
+        { to: "/teams", icon: <Users size={22} />, label: "Teams" },
+        isLoggedIn
+            ? {
+                to: "/logout",
+                icon: <LogOut size={22} />,
+                label: "Logout",
+                onClick: () => {
+                    // real logout function here
+                    setIsLoggedIn(false);
+                },
+            }
+            : {
+                to: "/signin",
+                icon: <LogIn size={22} />,
+                label: "Sign In",
+            },
+    ];
 
-  const renderButton = ({ to, icon, label, onClick }) => (
-    <Link
-      key={label}
-      to={to}
-      onClick={onClick}
-      className={`relative group flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 bg-gray-900/20 backdrop-blur-md ${
-        location.pathname === to
-          ? "bg-purple-600 text-white hover:-translate-y-0.5"
-          : "bg-gray-800 text-gray-400 hover:-translate-y-1 hover:bg-[#d6b3ff] hover:text-gray-900"
-      }`}
-    >
-      {icon}
-      <span className="absolute bottom-full mb-2 px-2 py-1 text-sm text-white bg-black rounded opacity-0 group-hover:opacity-100 whitespace-nowrap pointer-events-none transition-opacity duration-200">
+    const renderButton = ({ to, icon, label, onClick }) => (
+        <Link
+            key={label}
+            to={to}
+            onClick={onClick}
+            className={`relative group flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 bg-gray-900/20 backdrop-blur-md ${
+                location.pathname === to
+                    ? "bg-purple-600 text-white hover:-translate-y-0.5"
+                    : "bg-gray-800 text-gray-400 hover:-translate-y-1 hover:bg-[#d6b3ff] hover:text-gray-900"
+            }`}
+        >
+            {icon}
+            <span className="absolute bottom-full mb-2 px-2 py-1 text-sm text-white bg-black rounded opacity-0 group-hover:opacity-100 whitespace-nowrap pointer-events-none transition-opacity duration-200">
         {label}
-        <span className="absolute bottom-[-4px] left-1/2 -translate-x-1/2 w-2 h-2 bg-black transform rotate-45"></span>
+                <span className="absolute bottom-[-4px] left-1/2 -translate-x-1/2 w-2 h-2 bg-black transform rotate-45"></span>
       </span>
-    </Link>
-  );
+        </Link>
+    );
 
-  return (
-    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-gray-900/60 backdrop-blur-md p-3 rounded-full flex items-center space-x-3 shadow-lg border border-gray-700 z-50">
-      {mainLinks.map(renderButton)}
+    return (
+        <div className={`
+      fixed bottom-6 left-1/2 -translate-x-1/2 
+      p-3 rounded-full flex items-center space-x-3 
+      shadow-lg border border-gray-700 z-50
+      transition-all duration-300
+      ${isHomePage
+            ? "opacity-100 bg-gray-900/60 backdrop-blur-md"
+            : "opacity-50 hover:opacity-100 hover:pointer-events-auto bg-gray-900/60 backdrop-blur-md"}
+      hover:opacity-100 hover:pointer-events-auto
+    `}>
+            {mainLinks.map(renderButton)}
 
-      {/* Separator */}
-      <div className="w-px h-8 bg-gray-600 mr-3 ml-1"></div>
+            {/* Separator */}
+            <div className="w-px h-8 bg-gray-600 mr-3 ml-1"></div>
 
-      {secondaryLinks.map(renderButton)}
-    </div>
-  );
+            {secondaryLinks.map(renderButton)}
+        </div>
+    );
 }
