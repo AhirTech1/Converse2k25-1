@@ -22,11 +22,11 @@ function HomePage() {
 
   return (
     <div className="relative flex flex-col items-center justify-start min-h-screen text-white overflow-hidden text-gray-50 overflow-x-hidden min-h-screen relative">
-      {/* Enhanced Dynamic Animated Background with Subtle Stars and Gradient */}
+
       <div className="absolute inset-0 -z-5 w-full h-full animate-twinkling-stars bg-[url('/textures/starry-bg.png')] bg-cover opacity-50" />
       <div className="absolute inset-0 -z-10 w-full h-full animate-neon-glow before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-r before:from-purple-900/30 before:via-blue-900/30 before:to-purple-900/30 before:rounded-full before:blur-3xl" />
       
-      {/* Centered Logo and Title */}
+
       <div className="relative z-40 w-2/3 sm:w-1/4 md:w-1/5 lg:w-1/4 mt-8">
         <div className={`relative ${logoGlow ? 'animate-logo-glow' : ''}`}>
           <img
@@ -42,7 +42,7 @@ function HomePage() {
             </h1>
           </div>
 
-          {/* Subtle Sparkle Particles on Click */}
+          {/* Sparkle effect */}
           {logoGlow && (
             <div className="absolute inset-0 z-50 pointer-events-none overflow-hidden">
               {[...Array(10)].map((_, i) => (
@@ -140,7 +140,7 @@ function HomePage() {
         </div>
       </section>
 
-        {/* About Section */}
+        {/* ===== About Section ===== */}
         <section className="min-h-0 w-auto mt-24 px-3 sm:px-6 md:px-8">
             <div className="section-title mb-4 font-semibold max-w-5xl mx-auto text-center">
                 <h2 className="font-bold leading-tight">About<br /><span className="text-purple-500">Converse 2K25</span></h2>

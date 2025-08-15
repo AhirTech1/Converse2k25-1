@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { teamsList } from "../constants/teamsList.js";
-import "./Common.css"; // assuming your event card styles are there
+import "./Common.css";
 
 function Teams() {
     const navigate = useNavigate();

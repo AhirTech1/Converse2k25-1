@@ -70,17 +70,32 @@ function Events() {
         </button>
       </div>
 
-      {/* Navigation Overlay */}
-      {navigatingTo && (
-        <div className="fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center">
-          <div className="px-8 py-6 rounded-lg shadow-lg animate-pulse text-center">
-            <h2 className="text-xl font-semibold mb-2 text-gray-800">
-              Navigating to...
-            </h2>
-            <p className="text-lg font-bold text-blue-600">{navigatingTo}</p>
-          </div>
-        </div>
-      )}
+        {/* Navigation Overlay - Final Clean Version */}
+        {navigatingTo && (
+            <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center">
+                <div className="bg-gradient-to-br from-purple-900/80 to-gray-900/90 border border-purple-500/30 px-8 py-8 rounded-xl shadow-2xl text-center animate-fade-in">
+                    <div className="flex flex-col items-center justify-center space-y-4">
+                        <h2 className="text-xl font-medium text-purple-200">
+                            Taking you to
+                        </h2>
+                        <p className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-300 to-pink-300">
+                            {navigatingTo}
+                        </p>
+
+                        {/* Smooth loading bar with proper animation */}
+                        <div className="w-full max-w-xs h-1.5 bg-gray-700 rounded-full overflow-hidden mt-4">
+                            <div
+                                className="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"
+                                style={{
+                                    animation: 'loadingBar 1.5s linear forwards',
+                                    width: '0%'
+                                }}
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )}
 
       <div className="w-full px-4 sm:px-6 lg:px-8 mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
         {eventsToDisplay.map((event) => (

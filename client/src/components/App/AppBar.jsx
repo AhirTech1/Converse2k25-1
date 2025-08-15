@@ -1,4 +1,3 @@
-// src/components/AppBar.jsx
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Home, Calendar, LogIn, LogOut, SquareTerminal, Users } from "lucide-react";
@@ -53,13 +52,11 @@ export default function AppBar() {
 
   return (
     <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-gray-900/60 backdrop-blur-md p-3 rounded-full flex items-center space-x-3 shadow-lg border border-gray-700 z-50">
-      {/* Main nav buttons */}
       {mainLinks.map(renderButton)}
 
       {/* Separator */}
       <div className="w-px h-8 bg-gray-600 mr-3 ml-1"></div>
 
-      {/* Secondary nav buttons */}
       {secondaryLinks.map(renderButton)}
     </div>
   );
