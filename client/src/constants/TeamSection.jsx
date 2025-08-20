@@ -8,11 +8,11 @@ function TeamSection({ title, members, gradientClass }) {
                 {members.map((member, index) => (
                     <div key={index} className="team-card w-full sm:w-[calc(50%-2rem)] md:w-[calc(33.333%-2.666rem)] max-w-xs">
                         <div className={`team-img-wrapper ${gradientClass}`}>
-                            <img
-                                src={member.image}
-                                alt={member.name}
-                                className="team-img"
-                                loading="lazy"
+                            <img decoding="async"
+                                 src={member.image}
+                                 alt={member.name}
+                                 className="team-img"
+                                 loading="lazy"
                             />
                         </div>
                         <h4 className="team-name">{member.name}</h4>
@@ -23,4 +23,4 @@ function TeamSection({ title, members, gradientClass }) {
     );
 }
 
-export default TeamSection;
+export default React.memo(TeamSection);

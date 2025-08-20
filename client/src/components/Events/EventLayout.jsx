@@ -27,10 +27,10 @@ const EventLayout = ({
                     {/* Poster Section */}
                     <div className="flex justify-center items-start">
                         <div className="relative group">
-                            <img
-                                src={posterImage}
-                                alt={`${eventName} Poster`}
-                                className="rounded-xl shadow-2xl transform group-hover:scale-105 transition-transform duration-300 border-2 border-indigo-500/30"
+                            <img decoding="async" loading="lazy"
+                                 src={posterImage}
+                                 alt={`${eventName} Poster`}
+                                 className="rounded-xl shadow-2xl transform group-hover:scale-105 transition-transform duration-300 border-2 border-indigo-500/30"
                             />
                             <div className="absolute inset-0 bg-indigo-600/10 rounded-xl group-hover:opacity-0 transition-opacity duration-300"></div>
                         </div>
@@ -60,4 +60,4 @@ const EventLayout = ({
     );
 };
 
-export default EventLayout;
+export default React.memo(EventLayout);
