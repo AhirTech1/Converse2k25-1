@@ -1,0 +1,243 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInFromRight {
+    from { transform: translateX(30px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInFromLeft {
+    from { transform: translateX(-30px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes tableRowAppear {
+    from {
+        transform: translateY(10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes neonGlow {
+    0%, 100% {
+        text-shadow: 0 0 5px rgba(0, 255, 255, 0.7),
+        0 0 10px rgba(0, 255, 255, 0.5),
+        0 0 15px rgba(0, 255, 255, 0.3);
+    }
+    50% {
+        text-shadow: 0 0 10px rgba(0, 255, 255, 0.9),
+        0 0 20px rgba(0, 255, 255, 0.7),
+        0 0 30px rgba(0, 255, 255, 0.5);
+    }
+}
+
+@keyframes glitchFlicker {
+    0% {
+        transform: translate(0);
+        text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+    }
+    5% {
+        transform: translate(-2px, 1px);
+        text-shadow: -2px 0 0 cyan, 2px 0 0 magenta;
+    }
+    10% {
+        transform: translate(2px, -1px);
+        text-shadow: 2px 0 0 magenta, -2px 0 0 cyan;
+    }
+    15% {
+        transform: translate(-2px, -1px);
+        text-shadow: -3px 0 0 cyan, 3px 0 0 magenta;
+    }
+    20% {
+        transform: translate(0);
+        text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+    }
+    100% {
+        transform: translate(0);
+        text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+    }
+}
+
+.teams-section {
+    min-height: 100vh;
+    padding: 20px 0;
+    background: linear-gradient(to bottom, #1a0033, #2a004d);
+    position: relative;
+    overflow: hidden;
+}
+
+.ex {
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 30px;
+}
+
+.ex h2 {
+    font-family: "Orbitron", sans-serif;
+    font-size: 2.5rem;
+    font-weight: bold;
+    animation: neonGlow 2s infinite, glitchFlicker 8s infinite;
+}
+
+.schedule-page {
+    max-width: 1200px;
+    margin: 0 auto 25px;
+    padding: 20px;
+    background: rgba(26, 0, 51, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.schedule-day {
+    margin-bottom: 40px;
+}
+
+.schedule-day h2 {
+    font-family: "Inter", sans-serif;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-align: center;
+    animation: neonGlow 3s infinite;
+}
+
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.schedule-table th:nth-child(1),
+.schedule-table td:nth-child(1) {
+    width: 30%;
+}
+
+.schedule-table th:nth-child(2),
+.schedule-table td:nth-child(2) {
+    width: 45%;
+}
+
+.schedule-table th:nth-child(3),
+.schedule-table td:nth-child(3) {
+    width: 25%;
+}
+
+.schedule-table th,
+.schedule-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.schedule-table th {
+    background: linear-gradient(to right, #4a148c, #1a0033);
+    color: #b3e5fc;
+    font-weight: bold;
+}
+
+.schedule-table td {
+    color: #e0e0e0;
+}
+
+.schedule-table .current-event {
+    background: rgba(0, 150, 255, 0.15);
+    box-shadow: inset 0 0 10px rgba(0, 200, 255, 0.2);
+    animation: pulseGlow 2s infinite;
+}
+
+@keyframes pulseGlow {
+    0% { box-shadow: inset 0 0 10px rgba(0, 200, 255, 0.2); }
+    50% { box-shadow: inset 0 0 15px rgba(0, 200, 255, 0.4); }
+    100% { box-shadow: inset 0 0 10px rgba(0, 200, 255, 0.2); }
+}
+
+.status-live {
+    color: #4ade80;
+    font-weight: bold;
+}
+
+.status-upcoming {
+    color: #9ca3af;
+}
+
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.navigation-buttons button {
+    transition: all 0.3s ease;
+}
+
+.navigation-buttons button:hover:not(:disabled) {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 200, 255, 0.5);
+}
+
+.day-indicator {
+    display: flex;
+    align-items: center;
+    color: #e0e0e0;
+    font-family: "Inter", sans-serif;
+}
+
+/* Animation classes */
+.animate-fadeIn {
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+.animate-slideInRight {
+    animation: slideInFromRight 0.8s ease-out;
+}
+
+.animate-slideInLeft {
+    animation: slideInFromLeft 0.8s ease-out;
+}
+
+.table-row-animate {
+    animation: tableRowAppear 0.6s ease-out forwards;
+}
+
+@media (max-width: 768px) {
+    .schedule-page {
+        border-radius: 10px;
+        padding: 15px;
+    }
+
+    .ex h2 {
+        font-size: 2rem;
+    }
+
+    .schedule-day h2 {
+        font-size: 1.4rem;
+    }
+
+    .navigation-buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .navigation-buttons button {
+        width: 100%;
+    }
+
+    .day-indicator {
+        order: -1;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
