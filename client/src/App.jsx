@@ -1,7 +1,7 @@
-import React, {useEffect, Suspense} from 'react'
-import { Routes,Route } from 'react-router-dom'
-import ScrollToTop from './ScrollToTop'
-import { useDispatch } from "react-redux";
+import React, { useEffect, Suspense } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import ScrollToTop from './ScrollToTop';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchUser } from './auth/auth.js';
 
 const GraphicsTeam = React.lazy(() => import('./pages/TeamDetails/GraphicsTeam.jsx'));
@@ -25,54 +25,62 @@ const Cybersiege = React.lazy(() => import('./pages/EventDeatils/Cybersiege.jsx'
 const LogoHunt = React.lazy(() => import('./pages/EventDeatils/LogoHunt.jsx'));
 const HomePage = React.lazy(() => import('./pages/HomePage.jsx'));
 
-import AppBar from './components/App/AppBar.jsx'
-import AppFottor from './components/App/AppFottor.jsx'
-
-
+import AppBar from './components/App/AppBar.jsx';
+import AppFottor from './components/App/AppFottor.jsx';
 
 function App() {
     const dispatch = useDispatch();
+    const user = useSelector(state => state.auth.authData?.user);
 
     useEffect(() => {
-        const token = localStorage.getItem("profile");
+        // Check for a token on initial render and fetch user data if it exists
+        const token = localStorage.getItem('profile');
         if (token) {
             dispatch(fetchUser());
         }
     }, [dispatch]);
+
+    // Handle a user being logged out
+    if (!user && window.location.pathname !== '/signin') {
+        // Redirect to signin or show a public page
+        // Note: React Router's useNavigate hook is the preferred way to redirect.
+    }
+
     return (
         <>
-            <AppBar/>
+            <AppBar />
             <ScrollToTop />
-            <Suspense fallback={<div className='p-8 text-center text-gray-300'>Loading…</div>}><Routes>
-                <Route path='/' element={<HomePage/>}/>
-                <Route path='/about' element={<AboutPage/>}/>
-                <Route path='/schedule' element={<Schedule/>} />
-                <Route path='/events' element={<Events/>} />
-                <Route path='/signin' element={<Signin/>} />
-                <Route path='/profile' element={<Profile/>} />
-                <Route path='/teams' element={<Teams/>} />
+            <Suspense fallback={<div className='p-8 text-center text-gray-300'>Loading…</div>}>
+                <Routes>
+                    <Route path='/' element={<HomePage />} />
+                    <Route path='/about' element={<AboutPage />} />
+                    <Route path='/schedule' element={<Schedule />} />
+                    <Route path='/events' element={<Events />} />
+                    <Route path='/signin' element={<Signin />} />
+                    <Route path='/profile' element={<Profile />} />
+                    <Route path='/teams' element={<Teams />} />
 
-                {/* Event Page */}
-                <Route path='/event/logohunt' element={<LogoHunt/>}/>
-                <Route path= '/event/cybersiege' element={<Cybersiege/>}/>
-                <Route path='/event/itquiz' element={<ITQuiz/>}/>
-                <Route path='/event/bugbuzz' element={<BugBuzz/>}/>
-                <Route path='/event/codathon' element={<Codathon/>}/>
-                <Route path='/event/techtussle' element={<TechTussal/>}/>
-                <Route path='/event/webwave' element={<WebWaves/>}/>
-                <Route path='/event/aimemes' element={<AIMemes/>}/>
-                <Route path='/event/pyit' element={<PYIT/>}/>
-                <Route path='/event/aiquiz' element={<AIQuiz/>}/>
+                    {/* Event Page */}
+                    <Route path='/event/logohunt' element={<LogoHunt />} />
+                    <Route path='/event/cybersiege' element={<Cybersiege />} />
+                    <Route path='/event/itquiz' element={<ITQuiz />} />
+                    <Route path='/event/bugbuzz' element={<BugBuzz />} />
+                    <Route path='/event/codathon' element={<Codathon />} />
+                    <Route path='/event/techtussle' element={<TechTussal />} />
+                    <Route path='/event/webwave' element={<WebWaves />} />
+                    <Route path='/event/aimemes' element={<AIMemes />} />
+                    <Route path='/event/pyit' element={<PYIT />} />
+                    <Route path='/event/aiquiz' element={<AIQuiz />} />
 
-                {/* Teams Page */}
-                <Route path='/teams/core-team' element={<CoreTeam />}/>
-                <Route path='/teams/web-team' element={<WebTeam />}/>
-                <Route path='/teams/graphics-team' element={<GraphicsTeam />}/>
-
-            </Routes></Suspense>
-            <AppFottor/>
+                    {/* Teams Page */}
+                    <Route path='/teams/core-team' element={<CoreTeam />} />
+                    <Route path='/teams/web-team' element={<WebTeam />} />
+                    <Route path='/teams/graphics-team' element={<GraphicsTeam />} />
+                </Routes>
+            </Suspense>
+            <AppFottor />
         </>
-    )
+    );
 }
 
-export default App
+export default App;
